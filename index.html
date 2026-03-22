@@ -1,483 +1,109 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Top Transportes Executivo | Bento Gonçalves - RS</title>
-  <meta name="description" content="Transporte executivo em Bento Gonçalves e região. Segurança, pontualidade e conforto. Solicite sua corrida pelo WhatsApp." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --black: #0a0a0a;
-      --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --gold-dark: #8a6c28;
-      --white: #f5f2ec;
-      --gray: #888;
-      --gray-light: #ccc;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.5;
-    }
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 3rem;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      color: var(--gray-light);
-      text-decoration: none;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      padding: 0 3rem;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 60% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%),
-        linear-gradient(135deg, #0a0a0a 0%, #111 100%);
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 25%;
-      width: 1px;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.2), transparent);
-    }
-    .hero-content {
-      position: relative;
-      max-width: 700px;
-      animation: fadeUp 1s ease both;
-    }
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.2s both;
-    }
-    .hero-tag::before {
-      content: '';
-      width: 32px;
-      height: 1px;
-      background: var(--gold);
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 7vw, 6rem);
-      font-weight: 900;
-      line-height: 1.0;
-      margin-bottom: 1.8rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.4s both;
-    }
-    h1 em { font-style: normal; color: var(--gold); }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--gray-light);
-      line-height: 1.8;
-      max-width: 480px;
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.6s both;
-    }
-    .hero-cta {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.8s both;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 1rem 2rem;
-      background: var(--gold);
-      color: var(--black);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.88rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 1rem 2rem;
-      border: 1px solid rgba(201,168,76,0.4);
-      color: var(--gold);
-      text-decoration: none;
-      font-weight: 400;
-      font-size: 0.88rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: border-color 0.3s, background 0.3s;
-    }
-    .btn-secondary:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
-    .hero-stats {
-      position: absolute;
-      right: 4rem;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      opacity: 0;
-      animation: fadeLeft 0.8s ease 1s both;
-    }
-    .stat-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(201,168,76,0.15);
-      padding: 1.2rem 1.8rem;
-      text-align: center;
-      min-width: 140px;
-    }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 0.4rem;
-    }
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
-      margin: 0 3rem;
-    }
-    .section { padding: 6rem 3rem; }
-    .section-tag {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-    h2 em { font-style: normal; color: var(--gold); }
-    .section-intro {
-      color: var(--gray);
-      font-size: 1rem;
-      line-height: 1.8;
-      max-width: 520px;
-      margin-bottom: 3.5rem;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1px;
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.1);
-    }
-    .service-card {
-      background: var(--black);
-      padding: 2.5rem 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-    .service-card:hover { background: rgba(201,168,76,0.03); }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-icon { font-size: 2rem; margin-bottom: 1.2rem; }
-    .service-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      color: var(--white);
-    }
-    .service-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
-    .why-section {
-      padding: 6rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .why-left h2 { margin-bottom: 2rem; }
-    .why-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
-    .why-item { display: flex; gap: 1.2rem; align-items: flex-start; }
-    .why-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: rgba(201,168,76,0.2);
-      line-height: 1;
-      min-width: 2rem;
-    }
-    .why-text strong { display: block; font-size: 0.95rem; font-weight: 500; color: var(--white); margin-bottom: 0.3rem; }
-    .why-text span { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
-    .why-right {
-      background: rgba(201,168,76,0.04);
-      border: 1px solid rgba(201,168,76,0.12);
-      padding: 3rem;
-      position: relative;
-    }
-    .why-right::before {
-      content: '"';
-      font-family: 'Playfair Display', serif;
-      font-size: 8rem;
-      color: rgba(201,168,76,0.08);
-      position: absolute;
-      top: -1rem;
-      left: 1.5rem;
-      line-height: 1;
-    }
-    .testimonial-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-style: italic;
-      line-height: 1.8;
-      color: var(--gray-light);
-      margin-bottom: 1.5rem;
-    }
-    .testimonial-author { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
-    .contact-section { padding: 6rem 3rem; text-align: center; position: relative; }
-    .contact-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .contact-section h2 { margin-bottom: 0.8rem; }
-    .contact-sub { color: var(--gray); font-size: 1rem; margin-bottom: 3rem; }
-    .contact-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
-    .contact-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(201,168,76,0.15);
-      padding: 2rem 2.5rem;
-      text-decoration: none;
-      color: var(--white);
-      transition: border-color 0.3s, background 0.3s, transform 0.2s;
-      min-width: 200px;
-    }
-    .contact-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); transform: translateY(-4px); }
-    .contact-card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-    .contact-card-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
-    .contact-card-value { font-size: 1rem; font-weight: 500; }
-    .area-badge {
-      display: inline-block;
-      padding: 0.6rem 1.4rem;
-      border: 1px solid rgba(201,168,76,0.2);
-      font-size: 0.78rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-    footer {
-      border-top: 1px solid rgba(201,168,76,0.1);
-      padding: 2rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--gold); letter-spacing: 0.1em; }
-    .footer-info { font-size: 0.75rem; color: var(--gray); text-align: center; }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { font-size: 0.75rem; color: var(--gray); text-decoration: none; letter-spacing: 0.1em; transition: color 0.3s; }
-    .footer-links a:hover { color: var(--gold); }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeLeft { from { opacity: 0; transform: translate(30px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
-    .whatsapp-float {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 200;
-      width: 56px;
-      height: 56px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: pulse 2.5s ease infinite;
-    }
-    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.6); }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-      50% { box-shadow: 0 4px 32px rgba(37,211,102,0.7); }
-    }
-    @media (max-width: 900px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { padding: 0 1.5rem; padding-top: 5rem; min-height: auto; padding-bottom: 4rem; }
-      .hero-stats { display: none; }
-      .section { padding: 4rem 1.5rem; }
-      .why-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
-      .contact-section { padding: 4rem 1.5rem; }
-      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
-      .divider { margin: 0 1.5rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Transportes Executivo</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: #fff;
+  font-family: Arial;
+}
+
+nav {
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  max-width: 200px;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.gold {
+  color: #c9a84c;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 25px;
+  background: #c9a84c;
+  color: #000;
+  text-decoration: none;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.contact {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.card {
+  border: 1px solid #c9a84c;
+  padding: 20px;
+  margin: 10px auto;
+  max-width: 300px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #333;
+}
+</style>
 </head>
+
 <body>
-  <nav>
-    <div class="nav-logo">Top Transportes</div>
-    <ul class="nav-links">
-      <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-  </nav>
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <div class="hero-tag">Bento Gonçalves · Rio Grande do Sul</div>
-      <h1>Transporte<br /><em>Executivo</em><br />de Confiança</h1>
-      <p class="hero-sub">Mobilidade urbana com segurança, pontualidade e conforto. Atendimento ágil pelo WhatsApp para você e sua empresa.</p>
-      <div class="hero-cta">
-        <a href="https://wa.me/5554999571460" class="btn-primary">💬 Solicitar Corrida</a>
-        <a href="#servicos" class="btn-secondary">Ver Serviços →</a>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-card"><div class="stat-num">13</div><div class="stat-label">Motoristas</div></div>
-      <div class="stat-card"><div class="stat-num">100+</div><div class="stat-label">Corridas/dia</div></div>
-      <div class="stat-card"><div class="stat-num">24h</div><div class="stat-label">Disponível</div></div>
-    </div>
-  </section>
-  <div class="divider"></div>
-  <section class="section" id="servicos">
-    <div class="section-tag">O que oferecemos</div>
-    <h2>Nossos <em>Serviços</em></h2>
-    <p class="section-intro">Soluções completas de transporte para pessoas e empresas em Bento Gonçalves e região.</p>
-    <div class="services-grid">
-      <div class="service-card"><div class="service-icon">🚗</div><div class="service-title">Corridas Urbanas</div><div class="service-desc">Transporte rápido e seguro dentro de Bento Gonçalves e cidades vizinhas. Atendimento imediato pelo WhatsApp.</div></div>
-      <div class="service-card"><div class="service-icon">💼</div><div class="service-title">Executivo Corporativo</div><div class="service-desc">Transporte para executivos e colaboradores com pontualidade garantida. Ideal para empresas que precisam de confiabilidade.</div></div>
-      <div class="service-card"><div class="service-icon">✈️</div><div class="service-title">Transfer Aeroporto</div><div class="service-desc">Traslados para aeroportos da região com motorista monitorando seu voo. Sem surpresas e sem atrasos.</div></div>
-      <div class="service-card"><div class="service-icon">🎉</div><div class="service-title">Eventos e Ocasiões</div><div class="service-desc">Transporte para casamentos, formaturas, festas e eventos corporativos. Cuidado especial para momentos especiais.</div></div>
-      <div class="service-card"><div class="service-icon">🏥</div><div class="service-title">Transporte Médico</div><div class="service-desc">Condução segura para consultas, exames e procedimentos. Motoristas treinados para atender com cuidado e paciência.</div></div>
-      <div class="service-card"><div class="service-icon">📍</div><div class="service-title">Viagens Regionais</div><div class="service-desc">Destinos na Serra Gaúcha e região: Gramado, Canela, Caxias do Sul, Flores da Cunha e mais. Conforto na estrada.</div></div>
-    </div>
-  </section>
-  <div class="divider"></div>
-  <section class="why-section" id="sobre">
-    <div class="why-left">
-      <div class="section-tag">Por que nos escolher</div>
-      <h2>Segurança e <em>Excelência</em> em cada corrida</h2>
-      <ul class="why-list">
-        <li class="why-item"><div class="why-num">01</div><div class="why-text"><strong>Motoristas verificados</strong><span>Todos os nossos parceiros passam por seleção rigorosa e têm histórico limpo.</span></div></li>
-        <li class="why-item"><div class="why-num">02</div><div class="why-text"><strong>Atendimento pelo WhatsApp</strong><span>Solicite, acompanhe e avalie sua corrida diretamente pelo WhatsApp. Simples e rápido.</span></div></li>
-        <li class="why-item"><div class="why-num">03</div><div class="why-text"><strong>Preço justo e transparente</strong><span>Valor calculado antes da corrida. Sem surpresas na hora do pagamento.</span></div></li>
-        <li class="why-item"><div class="why-num">04</div><div class="why-text"><strong>Frota acompanhada em tempo real</strong><span>Monitoramento GPS ativo durante toda a corrida para sua segurança.</span></div></li>
-      </ul>
-    </div>
-    <div class="why-right">
-      <p class="testimonial-text">Uso o serviço da Top Transportes para levar clientes ao aeroporto. Nunca atrasaram uma vez sequer. Profissionalismo de verdade aqui na Serra Gaúcha.</p>
-      <div class="testimonial-author">Cliente Corporativo · Bento Gonçalves</div>
-    </div>
-  </section>
-  <div class="divider"></div>
-  <section class="contact-section" id="contato">
-    <div class="section-tag" style="justify-content:center;">Fale conosco</div>
-    <h2>Solicite sua <em>Corrida</em></h2>
-    <p class="contact-sub">Atendimento rápido pelo WhatsApp. Resposta em minutos.</p>
-    <div class="contact-cards">
-      <a href="https://wa.me/5554999571460" class="contact-card"><div class="contact-card-icon">💬</div><div class="contact-card-label">WhatsApp Empresa</div><div class="contact-card-value">(54) 99957-1460</div></a>
-      <a href="tel:+5554999571460" class="contact-card"><div class="contact-card-icon">📞</div><div class="contact-card-label">Telefone</div><div class="contact-card-value">(54) 99957-1460</div></a>
-      <div class="contact-card" style="cursor:default;"><div class="contact-card-icon">📍</div><div class="contact-card-label">Localização</div><div class="contact-card-value">Bento Gonçalves · RS</div></div>
-    </div>
-    <div class="area-badge">Atendemos: Bento Gonçalves · Garibaldi · Carlos Barbosa · Caxias do Sul · Gramado · Canela</div>
-  </section>
-  <footer>
-    <div class="footer-logo">Top Transportes Executivo</div>
-    <div class="footer-info">
-      © 2026 Top Transportes Executivo · CNPJ: 22.481.858/0001-58 · Bento Gonçalves – RS<br />
-      Transporte privado de passageiros · Mobilidade urbana
-    </div>
-    <div class="footer-links">
-      <a href="#servicos">Serviços</a>
-      <a href="#contato">Contato</a>
-      <a href="https://wa.me/5554999571460">WhatsApp</a>
-    </div>
-  </footer>
-  <a href="https://wa.me/5554999571460" class="whatsapp-float" title="Falar no WhatsApp">💬</a>
+
+<nav>
+  <img src="logo.png" class="logo">
+</nav>
+
+<section class="hero">
+  <h1>Transporte <span class="gold">Executivo</span><br>de Confiança</h1>
+  <p>Segurança, conforto e pontualidade.</p>
+
+  <a href="https://wa.me/5554999571460" class="btn">
+    Solicitar Corrida
+  </a>
+</section>
+
+<section class="contact">
+
+  <div class="card">
+    <h3>WhatsApp / Telefone</h3>
+    <a href="https://wa.me/5554999571460">(54) 99957-1460</a>
+  </div>
+
+  <div class="card">
+    <h3>E-mail</h3>
+    <p>contato@toptransportesexecutivo.com.br</p>
+  </div>
+
+  <div class="card">
+    <h3>Localização</h3>
+    <p>Bento Gonçalves - RS</p>
+  </div>
+
+</section>
+
+<footer>
+  <img src="logo.png" class="logo"><br><br>
+  © 2026 Top Transportes Executivo
+</footer>
+
 </body>
-  </html>
+</html>
