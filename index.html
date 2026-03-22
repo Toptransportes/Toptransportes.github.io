@@ -325,14 +325,17 @@
     .contact-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }  
     .contact-card {  
       background: rgba(255,255,255,0.02);  
-      border: 1px solid rgba(201,168,76,0.15);  
+      border: none; 
       padding: 2rem 2.5rem;  
       text-decoration: none;  
       color: var(--white);  
       transition: border-color 0.3s, background 0.3s, transform 0.2s;  
       min-width: 200px;  
     }  
-    .contact-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); transform: translateY(-4px); }  
+    .contact-card:hover {
+      background: rgba(201,168,76,0.08);
+      transform: translateY(-3px);
+    } background: rgba(201,168,76,0.05); transform: translateY(-4px); }  
     .contact-card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }  
     .contact-card-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }  
     .contact-card-value { font-size: 1rem; font-weight: 500; }  
@@ -489,7 +492,7 @@
   </section>  
   <footer>  
      <div class="footer-logo">
-  <img src="logo.JPG" style="height:40px;">
+  <img src="logo.jpg" style="height:40px;">
      </div> 
     <div class="footer-info">  
       © 2026 Top Transportes Executivo · CNPJ: 22.481.858/0001-58 · Bento Gonçalves – RS<br />  
