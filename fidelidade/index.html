@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartão Fidelidade — Top Transportes Executivo</title>
+<meta name="description" content="Conheça os benefícios do Cartão Fidelidade da Top Transportes Executivo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c0e;
+    --bg-raised:#151417;
+    --line:#2a2723;
+    --gold:#c9a24b;
+    --gold-bright:#e6c877;
+    --cream:#f3ecdc;
+    --cream-dim:#b9b2a0;
+    --wine:#3a1f1a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Manrope',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .route-divider{
+    position:relative;
+    height:28px;
+    margin:0 auto;
+    width:2px;
+    background:repeating-linear-gradient(to bottom, var(--gold) 0 10px, transparent 10px 18px);
+    opacity:.55;
+  }
+
+  header{
+    padding:38px 24px 20px;
+    text-align:center;
+  }
+  .brand-eyebrow{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+  }
+  header h1{
+    font-size:clamp(28px,7vw,40px);
+    margin-top:10px;
+    color:var(--cream);
+  }
+  header h1 em{
+    color:var(--gold-bright);
+    font-style:normal;
+  }
+  header p{
+    margin-top:10px;
+    color:var(--cream-dim);
+    font-size:15px;
+    max-width:480px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .video-wrap{
+    max-width:420px;
+    margin:26px auto 8px;
+    padding:0 20px;
+  }
+  .video-frame{
+    position:relative;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:#000;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(201,162,75,.08);
+  }
+  video{
+    width:100%;
+    display:block;
+    aspect-ratio:9/16;
+    background:#000;
+  }
+  .video-caption{
+    text-align:center;
+    font-size:12.5px;
+    color:var(--cream-dim);
+    margin-top:12px;
+    letter-spacing:.02em;
+  }
+
+  section{
+    max-width:520px;
+    margin:0 auto;
+    padding:44px 24px;
+  }
+
+  .section-eyebrow{
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:10px;
+    text-align:center;
+  }
+  .section-title{
+    font-size:clamp(22px,5.5vw,28px);
+    text-align:center;
+    margin-bottom:6px;
+  }
+  .section-sub{
+    text-align:center;
+    color:var(--cream-dim);
+    font-size:14.5px;
+    max-width:400px;
+    margin:0 auto 34px;
+  }
+
+  .benefits{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .benefit{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:24px 22px;
+    position:relative;
+    overflow:hidden;
+  }
+  .benefit::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:3px;
+    height:100%;
+    background:linear-gradient(to bottom, var(--gold-bright), var(--gold));
+  }
+  .benefit-icon{
+    width:40px;height:40px;
+    border-radius:10px;
+    background:var(--wine);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;
+    color:var(--gold-bright);
+  }
+  .benefit-icon svg{width:20px;height:20px;stroke:var(--gold-bright);fill:none;stroke-width:1.8;}
+  .benefit h3{
+    font-size:17px;
+    color:var(--cream);
+    margin-bottom:6px;
+  }
+  .benefit p{
+    font-size:14px;
+    color:var(--cream-dim);
+  }
+  .benefit .tag{
+    display:inline-block;
+    margin-top:12px;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    border:1px solid rgba(201,162,75,.35);
+    border-radius:999px;
+    padding:4px 10px;
+  }
+
+  .steps{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    border-top:1px solid var(--line);
+  }
+  .step{
+    display:flex;
+    gap:16px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+    align-items:flex-start;
+  }
+  .step-index{
+    font-family:'Fraunces',serif;
+    font-size:20px;
+    color:var(--gold);
+    min-width:26px;
+  }
+  .step p{
+    font-size:14.5px;
+    color:var(--cream-dim);
+  }
+  .step strong{color:var(--cream);font-weight:700;}
+
+  .note{
+    margin-top:26px;
+    background:rgba(201,162,75,.07);
+    border:1px solid rgba(201,162,75,.25);
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:13.5px;
+    color:var(--cream-dim);
+    text-align:center;
+  }
+  .note strong{color:var(--gold-bright);}
+
+  footer{
+    text-align:center;
+    padding:40px 24px 60px;
+    border-top:1px solid var(--line);
+  }
+  footer .brand{
+    font-family:'Fraunces',serif;
+    font-size:20px;
+    color:var(--gold-bright);
+    margin-bottom:6px;
+  }
+  footer p{
+    color:var(--cream-dim);
+    font-size:13px;
+  }
+  footer a.wa{
+    display:inline-block;
+    margin-top:18px;
+    background:var(--gold);
+    color:#0c0c0e;
+    font-weight:700;
+    text-decoration:none;
+    font-size:14px;
+    padding:12px 26px;
+    border-radius:999px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand-eyebrow">Top Transportes Executivo</div>
+  <h1>Cartão <em>Fidelidade</em></h1>
+  <p>Cada corrida com a gente conta. Assista ao vídeo abaixo e conheça todos os benefícios de andar com a Top.</p>
+</header>
+
+<div class="video-wrap">
+  <div class="video-frame">
+    <video controls playsinline preload="metadata">
+      <source src="fidelidade-video.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo. Confira as regras abaixo.
+    </video>
+  </div>
+  <div class="video-caption">Toque para assistir · 1 min 35</div>
+</div>
+
+<div class="route-divider"></div>
+
+<section id="beneficios">
+  <div class="section-eyebrow">Benefícios</div>
+  <h2 class="section-title">Três formas de ganhar</h2>
+  <p class="section-sub">Escolha entre corrida grátis ou desconto — os benefícios não acumulam, mas se renovam a cada conquista.</p>
+
+  <div class="benefits">
+
+    <div class="benefit">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 17h1a2 2 0 0 0 4 0h6a2 2 0 0 0 4 0h1v-5l-2-5H7L4 12z"/><circle cx="7.5" cy="17" r="0"/><path d="M4 12h16"/></svg>
+      </div>
+      <h3>Fidelidade nas corridas</h3>
+      <p>A cada 10 corridas completas, você escolhe: a 11ª sai grátis, ou 20% de desconto numa corrida dentro da cidade.</p>
+      <span class="tag">10 corridas → escolha o prêmio</span>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M17 10l2 2 3-3"/></svg>
+      </div>
+      <h3>Indicação de cliente</h3>
+      <p>Indicou um amigo e ele virou cliente Top? Você escolhe entre 1 corrida grátis ou 20% de desconto numa corrida dentro da cidade.</p>
+      <span class="tag">Por indicação confirmada</span>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="9" width="7" height="11"/><rect x="14" y="4" width="7" height="16"/><path d="M6.5 12.5h0M6.5 15.5h0M17.5 8.5h0M17.5 11.5h0M17.5 14.5h0"/></svg>
+      </div>
+      <h3>Indicação de empresa</h3>
+      <p>Indicou uma empresa e ela fechou parceria com a Top para transporte de funcionários? Você ganha 10 corridas grátis.</p>
+      <span class="tag">10 corridas grátis</span>
+    </div>
+
+  </div>
+
+  <div class="note">
+    Depois de conquistar o benefício, você tem até <strong>3 meses</strong> para resgatar.
+  </div>
+</section>
+
+<div class="route-divider"></div>
+
+<section id="como-participar">
+  <div class="section-eyebrow">Passo a passo</div>
+  <h2 class="section-title">Como resgatar</h2>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-index">·</span>
+      <p><strong>Poste uma foto ou vídeo</strong> de uma viagem com a Top, marcando a gente no Instagram e seguindo nosso perfil.</p>
+    </div>
+    <div class="step">
+      <span class="step-index">·</span>
+      <p><strong>Ou envie direto pelo WhatsApp</strong> — a gente confirma seu benefício rapidinho.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">Top Transportes Executivo</div>
+  <p>Bento Gonçalves · RS · Serra Gaúcha</p>
+  <p>Não fica de fora — participa e aproveita os benefícios.</p>
+  <a class="wa" href="https://wa.me/5554999571460" target="_blank" rel="noopener">Falar no WhatsApp</a>
+</footer>
+
+</body>
+  </html>
